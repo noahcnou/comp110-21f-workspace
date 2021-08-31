@@ -1,4 +1,4 @@
-"""Numeric Operators"""
+"""Numeric Operators."""
 
 __author__ = "730408365"
 
