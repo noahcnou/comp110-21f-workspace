@@ -3,4 +3,11 @@
 __author__ = "730408365"
 
 
-# Begin your solution here...
+letter = input("What letter do you want to search for? ")
+word = input("Enter a word: ")
+count = 0
+while len(word) != 1:
+    if letter == word[0]:
+        count = count + 1
+    word = word[1:]
+print(count)
