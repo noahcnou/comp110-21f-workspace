@@ -3,12 +3,12 @@
 choice: int = int(input("Enter a number: "))
 
 if choice > 75:
-    print("C")
+    print("A")
 else:
     if choice >= 50:
-        print("D")
+        print("B")
     else: 
         if choice < 25: 
-            print("A")
+            print("D")
         else:
-            print("B")
+            print("C")
