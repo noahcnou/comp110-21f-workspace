@@ -9,4 +9,4 @@ while len(word) != 1:
     if letter == word[0]:
         count = count + 1
     word = word[1:]
-print(count)
+print("Count:", count) 
