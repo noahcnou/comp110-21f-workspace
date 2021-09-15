@@ -1,21 +1,21 @@
 """Finding duplicate letters in a word."""
 
-__author__ = "730396074"
+__author__ = "730408365"
 
 word: str = input("Enter a word: ")
 i: int = 0
-s: int = 0
+a: int = 0
 
 while i < len(word):
-    h: int = 0
-    while h < len(word):
-        if h != i:
-            if word[h] == word[i]:
-                s = s + 1
-        h += 1
+    s: int = 0
+    while s < len(word):
+        if s != i:
+            if word[s] == word[i]:
+                a = a + 1
+        s += 1
     i += 1
 
-if s > 0:
+if a > 0:
     print("Found duplicate: True")
 else:
     print("Found duplicate: False")
