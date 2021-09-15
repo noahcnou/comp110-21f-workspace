@@ -6,7 +6,7 @@ TREE: str = '\U0001F332'
 i = int(input("Depth: "))
 t = TREE
 
-while i >= 1:
+while i > 0:
     i = i - 1
     print(t)
     t = t + TREE

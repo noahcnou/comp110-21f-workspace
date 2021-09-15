@@ -2,20 +2,20 @@
 
 __author__ = "730408365"
 
-word: str = input("Enter a word: ")
-i: int = 0
-a: int = 0
+word = input("Enter a word: ")
+letter_count = 0
+count = 0
 
-while i < len(word):
-    s: int = 0
-    while s < len(word):
-        if s != i:
-            if word[s] == word[i]:
-                a = a + 1
-        s += 1
-    i += 1
+while letter_count < len(word):
+    a = 0
+    while a < len(word):
+        if a != letter_count:
+            if word[a] == word[letter_count]:
+                count = count + 1
+        a += 1
+    letter_count += 1
 
-if a > 0:
+if count > 0:
     print("Found duplicate: True")
 else:
     print("Found duplicate: False")
