@@ -15,7 +15,7 @@ else:
         print("TAR")
         remainder = remainder + 1
     if number % 7 == 0:
-        print("Heels")
+        print("HEELS")
         remainder = remainder + 1
 if remainder == 0:
     print("CAROLINA")
