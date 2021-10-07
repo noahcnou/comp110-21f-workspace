@@ -8,7 +8,7 @@ __author__ = "730408365"
 def only_evens(xs: list[int]) -> list[int]:
     a: int = 0
     b: int = 0
-    if len(xs) == 0:
+    while len(xs) == 0:
         return(xs)
     while a <= len(xs):
         if xs[b] % 2 != 0:
@@ -23,11 +23,11 @@ def only_evens(xs: list[int]) -> list[int]:
 
 def sub(xs: list[int], x: int, y: int) -> list[int]:
     new: list[int] = []
-    if x < 0:
+    while x < 0:
         x = 0
-    if y > len(xs):
+    while y > len(xs):
         y = len(xs)
-    if len(xs) == 0:
+    while len(xs) == 0:
         return new
     while x < y:
         new.append(int(xs[x]))
