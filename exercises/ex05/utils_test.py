@@ -19,6 +19,11 @@ def test_only_evens_with_odd_numbers() -> None:
     assert only_evens(xs) == []
 
 
+def test_only_evens_empty_list() -> None:
+    xs: list[int] = []
+    assert only_evens(xs) == []
+
+
 def test_sub_empty_list() -> None:
     xs: list[int] = []
     a: int = 0
