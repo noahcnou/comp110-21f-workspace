@@ -36,7 +36,7 @@ class Simpy:
         # Be sure step is not 0.0 by asserting
         assert step != 0.0
         # When step is positive:
-        if step > 0.0:
+        if step >= 0.0:
             # Initiailize next value to start
             next_value: float = start
             # While next value is < stop value
@@ -45,7 +45,6 @@ class Simpy:
                 self.values.append(next_value)
                 # Update next value by adding step to it
                 next_value += step
-        # else TODO: handle the negative step case
 
     def sum(self) -> float:
         """Delegate this algo to the built-in sum fn."""
@@ -62,5 +61,74 @@ class Simpy:
             i: int = 0
             while i < len(self.values):
                 result.values.append(self.values[i] + rhs.values[i])
+                i += 1
+        return result
+
+    def __pow__(self, rhs: Union[float, Simpy]) -> Simpy:
+        """Operator overload for raising something to a power."""
+        result: Simpy = Simpy([])
+        if isinstance(rhs, Simpy):
+            assert len(self.values) == len(rhs.values)
+            i: int = 0
+            while i < len(self.values):
+                result.values.append(self.values[i] ** rhs.values[i])
+                i += 1
+        else:
+            for value in self.values:
+                result.values.append(value ** rhs)
+        return result
+
+    def __eq__(self, rhs: Union[float, Simpy]) -> list[bool]:
+        """Finds equal values in Simpys."""
+        result: list[bool] = []
+        if isinstance(rhs, float):
+            for value in self.values:
+                if rhs == value:
+                    result.append(True)
+                else:
+                    result.append(False)
+        else:
+            assert len(self.values) == len(rhs.values)
+            i: int = 0
+            while i < len(self.values):
+                if self.values[i] == rhs.values[i]:
+                    result.append(True)
+                else:
+                    result.append(False)
+                i += 1
+        return result
+
+    def __gt__(self, rhs: Union[float, Simpy]) -> list[bool]:
+        """Compares two Simpys."""
+        result: list[bool] = []
+        if isinstance(rhs, float):
+            i: int = 0
+            while i < len(self.values):
+                if self.values[i] > rhs:
+                    result.append(True)
+                else:
+                    result.append(False)
+                i += 1
+        else:
+            assert len(self.values) == len(rhs.values)
+            i: int = 0
+            while i < len(self.values):
+                if self.values[i] > rhs.values[i]:
+                    result.append(True)
+                else:
+                    result.append(False)
+                i += 1
+        return result
+
+    def __getitem__(self, rhs: Union[int, list[bool]]) -> Union[float, Simpy]:
+        """Masks lists over a Simpy."""
+        if isinstance(rhs, int):
+            return self.values[rhs]
+        else:
+            result: Simpy = Simpy([])
+            i: int = 0
+            if i < len(self.values):
+                if rhs[i]:
+                    result.values.append(self.values[i])
                 i += 1
         return result
